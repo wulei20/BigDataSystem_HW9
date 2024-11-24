@@ -1,7 +1,7 @@
 
 ROOT_DIR= $(shell pwd)
 
-TARGETS= bin/preprocess  bin/make_undirect bin/t2b bin/add_weight bin/bfs bin/wcc bin/pagerank bin/spmv bin/mis bin/radii
+TARGETS= bin/preprocess  bin/make_undirect bin/t2b bin/add_weight bin/bfs bin/wcc bin/pagerank bin/spmv bin/mis bin/radii bin/k_core bin/conductance
 
 CXX?= g++
 CXXFLAGS?= -O3 -Wall -std=c++11 -g -fopenmp -I$(ROOT_DIR)
@@ -37,6 +37,12 @@ bin/mis: examples/mis.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -o $@ $< $(SYSLIBS)
 
 bin/radii: examples/radii.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) -o $@ $< $(SYSLIBS)
+
+bin/k_core: examples/k_core.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) -o $@ $< $(SYSLIBS)
+
+bin/conductance: examples/conductance.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -o $@ $< $(SYSLIBS)
 
 clean:
